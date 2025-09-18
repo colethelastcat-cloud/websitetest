@@ -16,36 +16,35 @@
             background-image: radial-gradient(circle at top, #111827 0%, #0A0A0A 50%);
             overflow-x: hidden;
         }
-        .accent-blue {
-            color: #38bdf8;
+        .accent-color {
+            color: #8B5CF6;
         }
         .button-primary {
-            background-color: #38bdf8;
-            color: #0A0A0A;
+            background-color: #8B5CF6;
+            color: #fff;
             transition: transform 0.3s ease, background-color 0.3s ease;
         }
         .button-primary:hover {
             transform: scale(1.05);
-            background-color: #7dd3fc;
+            background-color: #A78BFA;
         }
         .button-secondary {
-             background-color: rgba(56, 189, 248, 0.1);
-             border: 1px solid rgba(56, 189, 248, 0.2);
-             color: #38bdf8;
+             background-color: rgba(139, 92, 246, 0.1);
+             border: 1px solid rgba(139, 92, 246, 0.2);
+             color: #A78BFA;
              transition: background-color 0.3s ease;
         }
         .button-secondary:hover {
-            background-color: rgba(56, 189, 248, 0.2);
+            background-color: rgba(139, 92, 246, 0.2);
         }
         .card-glow-border {
             position: relative;
             background-color: #1a1a1a;
             border: 1px solid #2a2a2a;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            transition: transform 0.15s ease-out, border-color 0.3s ease;
         }
         .card-glow-border:hover {
-            transform: translateY(-5px);
-            border-color: #38bdf8;
+            border-color: #8B5CF6;
         }
         .card-glow-border::before {
             content: "";
@@ -53,7 +52,7 @@
             inset: 0;
             border-radius: 1.1rem; 
             padding: 1px;
-            background: linear-gradient(120deg, transparent, #38bdf8, transparent);
+            background: linear-gradient(120deg, transparent, #8B5CF6, transparent);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
@@ -91,6 +90,21 @@
         .animate-on-scroll:nth-child(2) {
             transition-delay: 0.1s;
         }
+        .status-indicator-online {
+            background-color: #22c55e;
+            box-shadow: 0 0 10px #22c55e;
+        }
+        .status-text-online { color: #22c55e; }
+        .status-indicator-testing {
+            background-color: #f59e0b;
+            box-shadow: 0 0 10px #f59e0b;
+        }
+        .status-text-testing { color: #f59e0b; }
+        .status-indicator-offline {
+            background-color: #ef4444;
+            box-shadow: 0 0 10px #ef4444;
+        }
+        .status-text-offline { color: #ef4444; }
     </style>
 </head>
 <body class="text-white">
@@ -102,6 +116,10 @@
                 <div class="flex items-center space-x-3">
                     <img src="https://media.discordapp.net/attachments/1416618754531393699/1418054850591195279/image.png?ex=68ccb9fe&is=68cb687e&hm=5a2aa5578f8fa5bfa3c6f87a787a282d0e28d7d579eb690069fa39a2264edb46&=&format=webp&quality=lossless" alt="Exerium Logo" class="h-8 w-auto">
                     <span class="font-bold text-xl tracking-wide">EXERIUM</span>
+                     <div class="flex items-center text-sm font-semibold ml-4">
+                        <span id="script-status-indicator" class="w-2.5 h-2.5 rounded-full mr-2"></span>
+                        <span id="script-status-text"></span>
+                    </div>
                 </div>
                 <div class="hidden md:flex items-center space-x-8 font-medium text-gray-400">
                     <a href="#home" class="hover:text-white transition-colors nav-link">Home</a>
@@ -117,7 +135,7 @@
 
         <main id="home" class="text-center py-20 sm:py-28">
             <h1 class="text-5xl sm:text-7xl font-extrabold tracking-tight fade-in-up">
-                Welcome to <span class="accent-blue">Exerium</span>
+                Welcome to <span class="accent-color">Exerium</span>
             </h1>
             <p class="mt-6 max-w-2xl mx-auto text-lg text-gray-400 fade-in-up delay-1">
                 The pinnacle of script performance and reliability for FF2 & Rivals.
@@ -132,7 +150,7 @@
                      Lightning Fast
                 </span>
                  <span class="flex items-center gap-2">
-                     <svg class="w-5 h-5 text-sky-400" fill="currentColor" viewBox="0 0 20 20"><path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" /></svg>
+                     <svg class="w-5 h-5 text-violet-400" fill="currentColor" viewBox="0 0 20 20"><path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" /></svg>
                      Premium Quality
                 </span>
             </div>
@@ -152,13 +170,13 @@
                 <div class="p-8 rounded-2xl flex flex-col group card-glow-border animate-on-scroll">
                     <div class="flex justify-between items-start mb-4">
                         <h3 class="text-2xl font-bold">FF2 Script</h3>
-                        <div class="text-sky-400">
+                        <div class="text-violet-400">
                              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                         </div>
                     </div>
                     <p class="text-gray-400 mt-2 mb-6 flex-grow">Aimbot, style throws, route assists, anti-tag visual, and a fully customizable HUD to dominate the field.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="flex-1 text-center bg-sky-600/80 hover:bg-sky-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors setup-guide-button">Purchase</a>
+                        <a href="#" class="flex-1 text-center bg-violet-600/80 hover:bg-violet-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors setup-guide-button">Purchase</a>
                         <a href="#" class="see-features-button flex-1 text-center bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors" data-features="ff2">See Features</a>
                     </div>
                 </div>
@@ -166,13 +184,13 @@
                 <div class="p-8 rounded-2xl flex flex-col group card-glow-border animate-on-scroll">
                      <div class="flex justify-between items-start mb-4">
                         <h3 class="text-2xl font-bold">Rivals Script</h3>
-                        <div class="text-sky-400">
+                        <div class="text-violet-400">
                              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
                         </div>
                     </div>
                     <p class="text-gray-400 mt-2 mb-6 flex-grow">Smart ESP, movement tweens, auto-exec routines, and clean overlays for a competitive edge.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="flex-1 text-center bg-sky-600/80 hover:bg-sky-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors setup-guide-button">Purchase</a>
+                        <a href="#" class="flex-1 text-center bg-violet-600/80 hover:bg-violet-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors setup-guide-button">Purchase</a>
                         <a href="#" class="see-features-button flex-1 text-center bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors" data-features="rivals">See Features</a>
                     </div>
                 </div>
@@ -190,7 +208,7 @@
             <button id="close-purchase-modal-button" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl leading-none">&times;</button>
             <h3 class="text-2xl font-bold mb-4">Purchase Key</h3>
             <p class="text-gray-400 mb-6">All purchases are handled through our official Discord server.</p>
-            <a href="https://discord.gg/wUwA8J2eDf" target="_blank" class="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-lg text-lg inline-block transition-colors">
+            <a href="https://discord.gg/wUwA8J2eDf" target="_blank" class="w-full bg-violet-500 hover:bg-violet-600 text-white font-bold py-3 px-8 rounded-lg text-lg inline-block transition-colors">
                 Purchase in Discord
             </a>
         </div>
@@ -205,19 +223,19 @@
                     <h4 class="text-xl font-semibold">7-Day Key</h4>
                     <p class="text-3xl font-bold my-4">R$ 400</p>
                     <div class="flex-grow"></div>
-                    <a href="https://discord.gg/wUwA8J2eDf" target="_blank" class="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-6 rounded-lg transition-all mt-4">Get Key</a>
+                    <a href="https://discord.gg/wUwA8J2eDf" target="_blank" class="w-full bg-violet-500 hover:bg-violet-600 text-white font-bold py-2 px-6 rounded-lg transition-all mt-4">Get Key</a>
                 </div>
                 <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-6 text-center flex flex-col">
                     <h4 class="text-xl font-semibold">30-Day License</h4>
                     <p class="text-3xl font-bold my-4">R$ 1,500</p>
                     <div class="flex-grow"></div>
-                    <a href="https://discord.gg/wUwA8J2eDf" target="_blank" class="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-6 rounded-lg transition-all mt-4">Get Key</a>
+                    <a href="https://discord.gg/wUwA8J2eDf" target="_blank" class="w-full bg-violet-500 hover:bg-violet-600 text-white font-bold py-2 px-6 rounded-lg transition-all mt-4">Get Key</a>
                 </div>
                 <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-6 text-center flex flex-col">
                     <h4 class="text-xl font-semibold">Lifetime Key</h4>
                     <p class="text-3xl font-bold my-4">R$ 3,000</p>
                     <div class="flex-grow"></div>
-                    <a href="https://discord.gg/wUwA8J2eDf" target="_blank" class="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-6 rounded-lg transition-all mt-4">Get Key</a>
+                    <a href="https://discord.gg/wUwA8J2eDf" target="_blank" class="w-full bg-violet-500 hover:bg-violet-600 text-white font-bold py-2 px-6 rounded-lg transition-all mt-4">Get Key</a>
                 </div>
             </div>
         </div>
@@ -228,11 +246,11 @@
             <button id="close-features-selection-modal-button" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl leading-none">&times;</button>
             <h3 class="text-2xl font-bold mb-6 text-center">View Features</h3>
             <div class="grid md:grid-cols-2 gap-6">
-                <div class="select-feature-card bg-gray-800/50 border border-gray-700 rounded-lg p-4 text-center flex flex-col items-center cursor-pointer hover:border-sky-500 transition-colors" data-features="ff2">
+                <div class="select-feature-card bg-gray-800/50 border border-gray-700 rounded-lg p-4 text-center flex flex-col items-center cursor-pointer hover:border-violet-500 transition-colors" data-features="ff2">
                     <img src="https://ff2-rivals-website.vercel.app/_next/image?url=https%3A%2F%2Fslelguoygbfzlpylpxfs.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fdocument-uploads%2Fimage-1758158916246.png&w=1920&q=75" alt="FF2" class="rounded-md w-full object-cover aspect-video mb-4">
                     <h4 class="text-xl font-semibold">FF2 Features</h4>
                 </div>
-                <div class="select-feature-card bg-gray-800/50 border border-gray-700 rounded-lg p-4 text-center flex flex-col items-center cursor-pointer hover:border-sky-500 transition-colors" data-features="rivals">
+                <div class="select-feature-card bg-gray-800/50 border border-gray-700 rounded-lg p-4 text-center flex flex-col items-center cursor-pointer hover:border-violet-500 transition-colors" data-features="rivals">
                     <img src="https://ff2-rivals-website.vercel.app/_next/image?url=https%3A%2F%2Fslelguoygbfzlpylpxfs.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fdocument-uploads%2Fimage-1758158937286.png&w=1920&q=75" alt="Rivals" class="rounded-md w-full object-cover aspect-video mb-4">
                     <h4 class="text-xl font-semibold">Rivals Features</h4>
                 </div>
@@ -252,6 +270,24 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- EDIT SCRIPT STATUS HERE ---
+            // Options: "Online", "Testing", "Offline"
+            const currentStatus = "Online";
+            // --------------------------------
+
+            const statusIndicator = document.getElementById('script-status-indicator');
+            const statusText = document.getElementById('script-status-text');
+
+            if (statusIndicator && statusText) {
+                statusIndicator.className = 'w-2.5 h-2.5 rounded-full mr-2';
+                statusText.className = '';
+                
+                const statusLower = currentStatus.toLowerCase();
+                statusIndicator.classList.add(`status-indicator-${statusLower}`);
+                statusText.classList.add(`status-text-${statusLower}`);
+                statusText.textContent = currentStatus;
+            }
 
             document.querySelectorAll('a.nav-link[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -440,6 +476,5 @@
 
 </body>
 </html>
-
 
 
