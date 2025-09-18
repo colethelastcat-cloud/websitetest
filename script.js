@@ -49,22 +49,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const openModal = (modal) => {
         modal.classList.remove('hidden');
         setTimeout(() => {
-            modal.classList.remove('opacity-0');
-            const contentBox = modal.querySelector('.transform');
-            if (contentBox) {
-                contentBox.classList.remove('scale-95');
-                contentBox.classList.remove('translate-y-4');
-            }
+            modal.classList.remove('opacity-0', 'scale-95');
         }, 10);
     };
 
     const closeModal = (modal) => {
-        modal.classList.add('opacity-0');
-        const contentBox = modal.querySelector('.transform');
-        if (contentBox) {
-            contentBox.classList.add('scale-95');
-            contentBox.classList.add('translate-y-4');
-        }
+        modal.classList.add('opacity-0', 'scale-95');
         setTimeout(() => {
             modal.classList.add('hidden');
         }, 300);
@@ -219,70 +209,148 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextButton = document.querySelector('.next');
     const prevButton = document.querySelector('.prev');
     const dotsNav = document.querySelector('.slider-dots');
-    const slideWidth = slides[0].getBoundingClientRect().width;
+    
+    if (slides.length > 0) {
+        const slideWidth = slides[0].getBoundingClientRect().width;
 
-    const setSlidePosition = (slide, index) => {
-        slide.style.left = slideWidth * index + 'px';
+        const setSlidePosition = (slide, index) => {
+            slide.style.left = slideWidth * index + 'px';
+        };
+        slides.forEach(setSlidePosition);
+
+        const updateDots = (currentDot, targetDot) => {
+            currentDot.classList.remove('active');
+            targetDot.classList.add('active');
+        }
+        
+        slides.forEach((slide, index) => {
+            const button = document.createElement('button');
+            button.classList.add('dot');
+            if (index === 0) button.classList.add('active');
+            dotsNav.appendChild(button);
+        });
+        const dots = Array.from(dotsNav.children);
+
+        prevButton.addEventListener('click', e => {
+            const currentSlide = track.querySelector('.current-slide') || slides[0];
+            const prevSlide = currentSlide.previousElementSibling || slides[slides.length - 1];
+            const currentDot = dotsNav.querySelector('.active');
+            const prevDot = currentDot.previousElementSibling || dots[dots.length - 1];
+
+            track.style.transform = `translateX(-${(slides.indexOf(prevSlide)) * 100}%)`;
+            currentSlide.classList.remove('current-slide');
+            prevSlide.classList.add('current-slide');
+            updateDots(currentDot, prevDot);
+        });
+
+        nextButton.addEventListener('click', e => {
+            const currentSlide = track.querySelector('.current-slide') || slides[0];
+            const nextSlide = currentSlide.nextElementSibling || slides[0];
+            const currentDot = dotsNav.querySelector('.active');
+            const nextDot = currentDot.nextElementSibling || dots[0];
+            
+            track.style.transform = `translateX(-${(slides.indexOf(nextSlide)) * 100}%)`;
+            currentSlide.classList.remove('current-slide');
+            nextSlide.classList.add('current-slide');
+            updateDots(currentDot, nextDot);
+        });
+        
+        dotsNav.addEventListener('click', e => {
+            const targetDot = e.target.closest('button.dot');
+            if (!targetDot) return;
+            
+            const currentSlide = track.querySelector('.current-slide') || slides[0];
+            const currentDot = dotsNav.querySelector('.active');
+            const targetIndex = dots.findIndex(dot => dot === targetDot);
+            const targetSlide = slides[targetIndex];
+            
+            track.style.transform = `translateX(-${targetIndex * 100}%)`;
+            currentSlide.classList.remove('current-slide');
+            targetSlide.classList.add('current-slide');
+            
+            updateDots(currentDot, targetDot);
+        });
+    }
+
+    // --- AI Chatbot Logic ---
+    const chatWidget = document.getElementById('ai-chat-widget');
+    const chatWindow = document.getElementById('ai-chat-window');
+    const closeChatButton = document.getElementById('close-chat-button');
+    const chatForm = document.getElementById('chat-form');
+    const chatInput = document.getElementById('chat-input');
+    const chatMessages = document.getElementById('chat-messages');
+    const chatSubmitButton = document.getElementById('chat-submit-button');
+
+    const appendMessage = (text, sender) => {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('chat-message', `${sender}-message`);
+        messageElement.textContent = text;
+        chatMessages.appendChild(messageElement);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
     };
-    slides.forEach(setSlidePosition);
-
-    const moveToSlide = (currentSlide, targetSlide) => {
-        track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
-        currentSlide.classList.remove('current-slide');
-        targetSlide.classList.add('current-slide');
-    }
     
-    const updateDots = (currentDot, targetDot) => {
-        currentDot.classList.remove('active');
-        targetDot.classList.add('active');
-    }
+    const showTypingIndicator = () => {
+        const indicator = document.createElement('div');
+        indicator.id = 'typing-indicator';
+        indicator.classList.add('chat-message', 'ai-message', 'typing-indicator');
+        indicator.innerHTML = `<span></span><span></span><span></span>`;
+        chatMessages.appendChild(indicator);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    };
+
+    const removeTypingIndicator = () => {
+        const indicator = document.getElementById('typing-indicator');
+        if (indicator) {
+            indicator.remove();
+        }
+    };
     
-    slides.forEach((slide, index) => {
-        const button = document.createElement('button');
-        button.classList.add('dot');
-        if (index === 0) button.classList.add('active');
-        dotsNav.appendChild(button);
-    });
-    const dots = Array.from(dotsNav.children);
+    appendMessage("Hi! I'm the Exerium Assistant. How can I help you today?", 'ai');
 
-    prevButton.addEventListener('click', e => {
-        const currentSlide = track.querySelector('.current-slide') || slides[0];
-        const prevSlide = currentSlide.previousElementSibling || slides[slides.length - 1];
-        const currentDot = dotsNav.querySelector('.active');
-        const prevDot = currentDot.previousElementSibling || dots[dots.length - 1];
-
-        track.style.transform = `translateX(-${(slides.indexOf(prevSlide)) * 100}%)`;
-        currentSlide.classList.remove('current-slide');
-        prevSlide.classList.add('current-slide');
-        updateDots(currentDot, prevDot);
+    chatWidget.addEventListener('click', () => {
+        chatWindow.classList.toggle('hidden');
+        setTimeout(() => {
+             chatWindow.classList.toggle('opacity-0');
+             chatWindow.classList.toggle('scale-95');
+        }, 10);
     });
 
-    nextButton.addEventListener('click', e => {
-        const currentSlide = track.querySelector('.current-slide') || slides[0];
-        const nextSlide = currentSlide.nextElementSibling || slides[0];
-        const currentDot = dotsNav.querySelector('.active');
-        const nextDot = currentDot.nextElementSibling || dots[0];
-        
-        track.style.transform = `translateX(-${(slides.indexOf(nextSlide)) * 100}%)`;
-        currentSlide.classList.remove('current-slide');
-        nextSlide.classList.add('current-slide');
-        updateDots(currentDot, nextDot);
-    });
-    
-    dotsNav.addEventListener('click', e => {
-        const targetDot = e.target.closest('button.dot');
-        if (!targetDot) return;
-        
-        const currentSlide = track.querySelector('.current-slide') || slides[0];
-        const currentDot = dotsNav.querySelector('.active');
-        const targetIndex = dots.findIndex(dot => dot === targetDot);
-        const targetSlide = slides[targetIndex];
-        
-        track.style.transform = `translateX(-${targetIndex * 100}%)`;
-        currentSlide.classList.remove('current-slide');
-        targetSlide.classList.add('current-slide');
-        
-        updateDots(currentDot, targetDot);
+    closeChatButton.addEventListener('click', () => {
+        closeModal(chatWindow);
     });
 
+    chatForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const userMessage = chatInput.value.trim();
+        if (!userMessage) return;
+
+        appendMessage(userMessage, 'user');
+        chatInput.value = '';
+        chatSubmitButton.disabled = true;
+        showTypingIndicator();
+
+        try {
+            const response = await fetch('/api/gemini', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ query: userMessage }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const data = await response.json();
+            removeTypingIndicator();
+            appendMessage(data.reply, 'ai');
+        } catch (error) {
+            removeTypingIndicator();
+            appendMessage("Sorry, I couldn't connect to the AI. Please try again later.", 'ai');
+        } finally {
+            chatSubmitButton.disabled = false;
+        }
+    });
 });
+
