@@ -8,104 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0A0A0A;
-            color: #e5e7eb;
-            background-image: radial-gradient(circle at top, #111827 0%, #0A0A0A 50%);
-            overflow-x: hidden;
-        }
-        .accent-color {
-            color: #8B5CF6;
-        }
-        .button-primary {
-            background-color: #8B5CF6;
-            color: #fff;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-        .button-primary:hover {
-            transform: scale(1.05);
-            background-color: #A78BFA;
-        }
-        .button-secondary {
-             background-color: rgba(139, 92, 246, 0.1);
-             border: 1px solid rgba(139, 92, 246, 0.2);
-             color: #A78BFA;
-             transition: background-color 0.3s ease;
-        }
-        .button-secondary:hover {
-            background-color: rgba(139, 92, 246, 0.2);
-        }
-        .card-glow-border {
-            position: relative;
-            background-color: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            transition: transform 0.15s ease-out, border-color 0.3s ease;
-        }
-        .card-glow-border:hover {
-            border-color: #8B5CF6;
-        }
-        .card-glow-border::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 1.1rem; 
-            padding: 1px;
-            background: linear-gradient(120deg, transparent, #8B5CF6, transparent);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
-        .card-glow-border:hover::before {
-            opacity: 1;
-        }
-        
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(15px);
-            animation: fadeInUp 0.7s ease-out forwards;
-        }
-        .delay-1 { animation-delay: 0.15s; }
-        .delay-2 { animation-delay: 0.3s; }
-        .delay-3 { animation-delay: 0.45s; }
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .animate-on-scroll.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .animate-on-scroll:nth-child(2) {
-            transition-delay: 0.1s;
-        }
-        .status-indicator-online {
-            background-color: #22c55e;
-            box-shadow: 0 0 10px #22c55e;
-        }
-        .status-text-online { color: #22c55e; }
-        .status-indicator-testing {
-            background-color: #f59e0b;
-            box-shadow: 0 0 10px #f59e0b;
-        }
-        .status-text-testing { color: #f59e0b; }
-        .status-indicator-offline {
-            background-color: #ef4444;
-            box-shadow: 0 0 10px #ef4444;
-        }
-        .status-text-offline { color: #ef4444; }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="text-white">
 
@@ -196,6 +99,37 @@
                 </div>
             </div>
         </section>
+
+        <section class="py-20 animate-on-scroll">
+            <h2 class="text-center text-4xl font-bold tracking-tight mb-12">What Our Users Say</h2>
+            <div class="slider">
+                <div class="slider-track-container">
+                    <div class="slider-track">
+                        <div class="slide p-4">
+                            <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-8 text-center">
+                                <p class="text-lg italic text-gray-300">"Absolutely game-changing. The features are insane and the support is top-notch. Couldn't ask for more."</p>
+                                <p class="mt-6 font-bold text-violet-400">- SatisfiedGamer</p>
+                            </div>
+                        </div>
+                        <div class="slide p-4">
+                            <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-8 text-center">
+                                <p class="text-lg italic text-gray-300">"I was skeptical at first, but Exerium delivered. The performance is smooth and it's incredibly easy to use."</p>
+                                <p class="mt-6 font-bold text-violet-400">- ProPlayer123</p>
+                            </div>
+                        </div>
+                        <div class="slide p-4">
+                            <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-8 text-center">
+                                <p class="text-lg italic text-gray-300">"The best script I've ever used for FF2. The updates are frequent and it's always undetected. 10/10."</p>
+                                <p class="mt-6 font-bold text-violet-400">- FootballFanatic</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="slider-button prev">&lt;</button>
+                <button class="slider-button next">&gt;</button>
+                <div class="slider-dots"></div>
+            </div>
+        </section>
         
         <footer class="text-center py-8 border-t border-gray-800/70">
             <p class="text-gray-500 text-sm">&copy; 2025 Exerium. All rights reserved.</p>
@@ -204,292 +138,85 @@
     </div>
 
     <div id="purchase-modal" class="fixed inset-0 bg-black bg-opacity-70 z-50 flex justify-center items-center p-4 hidden transition-opacity duration-300 opacity-0">
-        <div class="bg-gray-900 border border-gray-700 rounded-lg p-8 max-w-sm w-full relative transform transition-all duration-300 scale-95 translate-y-4 text-center">
-            <button id="close-purchase-modal-button" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl leading-none">&times;</button>
-            <h3 class="text-2xl font-bold mb-4">Purchase Key</h3>
-            <p class="text-gray-400 mb-6">All purchases are handled through our official Discord server.</p>
-            <a href="https://discord.gg/wUwA8J2eDf" target="_blank" class="w-full bg-violet-500 hover:bg-violet-600 text-white font-bold py-3 px-8 rounded-lg text-lg inline-block transition-colors">
-                Purchase in Discord
-            </a>
+        <div class="modal-content-box rounded-xl w-full max-w-md relative transform transition-all duration-300 scale-95 translate-y-4 text-center">
+            <div class="p-6 border-b border-gray-700/50 flex justify-between items-center">
+                <h3 class="text-xl font-bold">Purchase Key</h3>
+                <button id="close-purchase-modal-button" class="text-gray-400 hover:text-white text-2xl leading-none close-modal-button">&times;</button>
+            </div>
+            <div class="p-8">
+                <p class="text-gray-400 mb-6">All purchases are handled through our official Discord server for your security.</p>
+                <a href="https://discord.gg/wUwA8J2eDf" target="_blank" class="w-full button-primary font-bold py-3 px-8 rounded-lg text-lg inline-block">
+                    Purchase in Discord
+                </a>
+            </div>
         </div>
     </div>
 
     <div id="pricing-modal" class="fixed inset-0 bg-black bg-opacity-70 z-50 flex justify-center items-center p-4 hidden transition-opacity duration-300 opacity-0">
-        <div class="bg-gray-900 border border-gray-700 rounded-lg p-8 max-w-4xl w-full relative transform transition-all duration-300 scale-95 translate-y-4">
-            <button id="close-pricing-modal-button" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl leading-none">&times;</button>
-            <h3 class="text-2xl font-bold mb-6 text-center">Pricing</h3>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-6 text-center flex flex-col">
-                    <h4 class="text-xl font-semibold">7-Day Key</h4>
-                    <p class="text-3xl font-bold my-4">R$ 400</p>
-                    <div class="flex-grow"></div>
-                    <a href="https://discord.gg/wUwA8J2eDf" target="_blank" class="w-full bg-violet-500 hover:bg-violet-600 text-white font-bold py-2 px-6 rounded-lg transition-all mt-4">Get Key</a>
-                </div>
-                <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-6 text-center flex flex-col">
-                    <h4 class="text-xl font-semibold">30-Day License</h4>
-                    <p class="text-3xl font-bold my-4">R$ 1,500</p>
-                    <div class="flex-grow"></div>
-                    <a href="https://discord.gg/wUwA8J2eDf" target="_blank" class="w-full bg-violet-500 hover:bg-violet-600 text-white font-bold py-2 px-6 rounded-lg transition-all mt-4">Get Key</a>
-                </div>
-                <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-6 text-center flex flex-col">
-                    <h4 class="text-xl font-semibold">Lifetime Key</h4>
-                    <p class="text-3xl font-bold my-4">R$ 3,000</p>
-                    <div class="flex-grow"></div>
-                    <a href="https://discord.gg/wUwA8J2eDf" target="_blank" class="w-full bg-violet-500 hover:bg-violet-600 text-white font-bold py-2 px-6 rounded-lg transition-all mt-4">Get Key</a>
+        <div class="modal-content-box rounded-xl w-full max-w-4xl relative transform transition-all duration-300 scale-95 translate-y-4">
+             <div class="p-6 border-b border-gray-700/50 flex justify-between items-center">
+                <h3 class="text-xl font-bold">Our Pricing</h3>
+                <button id="close-pricing-modal-button" class="text-gray-400 hover:text-white text-2xl leading-none close-modal-button">&times;</button>
+            </div>
+            <div class="p-8">
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-6 text-center flex flex-col hover:border-violet-500/50 transition-colors hover:bg-gray-800">
+                        <h4 class="text-xl font-semibold">7-Day Key</h4>
+                        <p class="text-4xl font-bold my-4 accent-color">R$ 400</p>
+                        <div class="flex-grow"></div>
+                        <a href="https://discord.gg/wUwA8J2eDf" target="_blank" class="w-full button-primary font-bold py-2 px-6 rounded-lg transition-all mt-4">Get Key</a>
+                    </div>
+                    <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-6 text-center flex flex-col hover:border-violet-500/50 transition-colors hover:bg-gray-800">
+                        <h4 class="text-xl font-semibold">30-Day License</h4>
+                        <p class="text-4xl font-bold my-4 accent-color">R$ 1,500</p>
+                        <div class="flex-grow"></div>
+                        <a href="https://discord.gg/wUwA8J2eDf" target="_blank" class="w-full button-primary font-bold py-2 px-6 rounded-lg transition-all mt-4">Get Key</a>
+                    </div>
+                    <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-6 text-center flex flex-col hover:border-violet-500/50 transition-colors hover:bg-gray-800">
+                        <h4 class="text-xl font-semibold">Lifetime Key</h4>
+                        <p class="text-4xl font-bold my-4 accent-color">R$ 3,000</p>
+                        <div class="flex-grow"></div>
+                        <a href="https://discord.gg/wUwA8J2eDf" target="_blank" class="w-full button-primary font-bold py-2 px-6 rounded-lg transition-all mt-4">Get Key</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     
     <div id="features-selection-modal" class="fixed inset-0 bg-black bg-opacity-70 z-50 flex justify-center items-center p-4 hidden transition-opacity duration-300 opacity-0">
-        <div class="bg-gray-900 border border-gray-700 rounded-lg p-8 max-w-2xl w-full relative transform transition-all duration-300 scale-95 translate-y-4">
-            <button id="close-features-selection-modal-button" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl leading-none">&times;</button>
-            <h3 class="text-2xl font-bold mb-6 text-center">View Features</h3>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="select-feature-card bg-gray-800/50 border border-gray-700 rounded-lg p-4 text-center flex flex-col items-center cursor-pointer hover:border-violet-500 transition-colors" data-features="ff2">
-                    <img src="https://ff2-rivals-website.vercel.app/_next/image?url=https%3A%2F%2Fslelguoygbfzlpylpxfs.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fdocument-uploads%2Fimage-1758158916246.png&w=1920&q=75" alt="FF2" class="rounded-md w-full object-cover aspect-video mb-4">
-                    <h4 class="text-xl font-semibold">FF2 Features</h4>
-                </div>
-                <div class="select-feature-card bg-gray-800/50 border border-gray-700 rounded-lg p-4 text-center flex flex-col items-center cursor-pointer hover:border-violet-500 transition-colors" data-features="rivals">
-                    <img src="https://ff2-rivals-website.vercel.app/_next/image?url=https%3A%2F%2Fslelguoygbfzlpylpxfs.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fdocument-uploads%2Fimage-1758158937286.png&w=1920&q=75" alt="Rivals" class="rounded-md w-full object-cover aspect-video mb-4">
-                    <h4 class="text-xl font-semibold">Rivals Features</h4>
+        <div class="modal-content-box rounded-xl w-full max-w-3xl relative transform transition-all duration-300 scale-95 translate-y-4">
+             <div class="p-6 border-b border-gray-700/50 flex justify-between items-center">
+                <h3 class="text-xl font-bold">Select a Product to View Features</h3>
+                <button id="close-features-selection-modal-button" class="text-gray-400 hover:text-white text-2xl leading-none close-modal-button">&times;</button>
+            </div>
+            <div class="p-8">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="select-feature-card bg-gray-800/50 border border-gray-700 rounded-lg p-4 text-center flex flex-col items-center cursor-pointer hover:border-violet-500 transition-all group hover:scale-105" data-features="ff2">
+                        <img src="https://ff2-rivals-website.vercel.app/_next/image?url=https%3A%2F%2Fslelguoygbfzlpylpxfs.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fdocument-uploads%2Fimage-1758158916246.png&w=1920&q=75" alt="FF2" class="rounded-md w-full object-cover aspect-video mb-4 transition-transform duration-300">
+                        <h4 class="text-xl font-semibold">FF2 Features</h4>
+                    </div>
+                    <div class="select-feature-card bg-gray-800/50 border border-gray-700 rounded-lg p-4 text-center flex flex-col items-center cursor-pointer hover:border-violet-500 transition-all group hover:scale-105" data-features="rivals">
+                        <img src="https://ff2-rivals-website.vercel.app/_next/image?url=https%3A%2F%2Fslelguoygbfzlpylpxfs.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fdocument-uploads%2Fimage-1758158937286.png&w=1920&q=75" alt="Rivals" class="rounded-md w-full object-cover aspect-video mb-4 transition-transform duration-300">
+                        <h4 class="text-xl font-semibold">Rivals Features</h4>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <div id="features-modal" class="fixed inset-0 bg-black bg-opacity-70 z-50 flex justify-center items-center p-4 hidden transition-opacity duration-300 opacity-0">
-        <div id="features-modal-content-box" class="bg-gray-900 border border-gray-700 rounded-lg p-8 max-w-xl w-full relative transform transition-all duration-300 scale-95 translate-y-4 max-h-[90vh] overflow-y-auto">
-            <button id="close-features-modal-button" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl leading-none">&times;</button>
-            <h3 id="features-modal-title" class="text-2xl font-bold mb-4">Features</h3>
-            <div id="features-modal-list" class="space-y-2">
+        <div class="modal-content-box rounded-xl w-full max-w-2xl relative transform transition-all duration-300 scale-95 translate-y-4 flex flex-col max-h-[90vh]">
+             <div class="p-6 border-b border-gray-700/50 flex justify-between items-center flex-shrink-0">
+                <h3 id="features-modal-title" class="text-xl font-bold">Features</h3>
+                <button id="close-features-modal-button" class="text-gray-400 hover:text-white text-2xl leading-none close-modal-button">&times;</button>
+            </div>
+            <div id="features-modal-list" class="p-8 space-y-2 overflow-y-auto">
             </div>
         </div>
     </div>
 
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            /*
-            |--------------------------------------------------------------------------
-            | SCRIPT STATUS CONFIGURATION
-            |--------------------------------------------------------------------------
-            |
-            | This is the easiest place to update the status of your script.
-            | Just change the text inside the quotes below to one of the
-            | three available options.
-            |
-            | Available Options:
-            |   - "Online"  (Displays a green glowing dot)
-            |   - "Testing" (Displays an orange glowing dot)
-            |   - "Offline" (Displays a red glowing dot)
-            |
-            */
-            const currentStatus = "Testing";
-
-
-            const statusIndicator = document.getElementById('script-status-indicator');
-            const statusText = document.getElementById('script-status-text');
-
-            if (statusIndicator && statusText) {
-                statusIndicator.className = 'w-2.5 h-2.5 rounded-full mr-2';
-                statusText.className = '';
-                
-                const statusLower = currentStatus.toLowerCase();
-                statusIndicator.classList.add(`status-indicator-${statusLower}`);
-                statusText.classList.add(`status-text-${statusLower}`);
-                statusText.textContent = currentStatus;
-            }
-
-            document.querySelectorAll('a.nav-link[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    const targetId = this.getAttribute('href');
-                    if (targetId && targetId !== '#') {
-                        e.preventDefault();
-                        const targetElement = document.querySelector(targetId);
-                        if (targetElement) {
-                            targetElement.scrollIntoView({
-                                behavior: 'smooth'
-                            });
-                        }
-                    }
-                });
-            });
-
-            const openModal = (modal) => {
-                modal.classList.remove('hidden');
-                setTimeout(() => {
-                    modal.classList.remove('opacity-0');
-                    const contentBox = modal.querySelector('.transform');
-                    if (contentBox) {
-                        contentBox.classList.remove('scale-95');
-                        contentBox.classList.remove('translate-y-4');
-                    }
-                }, 10);
-            };
-
-            const closeModal = (modal) => {
-                modal.classList.add('opacity-0');
-                const contentBox = modal.querySelector('.transform');
-                if (contentBox) {
-                    contentBox.classList.add('scale-95');
-                    contentBox.classList.add('translate-y-4');
-                }
-                setTimeout(() => {
-                    modal.classList.add('hidden');
-                }, 300);
-            };
-
-            const featuresData = {
-                ff2: {
-                    title: 'FF2 Script Features',
-                    features: {
-                        'General': [
-                            'Advanced Aimbot with prediction',
-                            'Customizable Style Throws',
-                            'Automated Route Assists',
-                            'Anti-Tag Visuals',
-                            'Fully Customizable HUD'
-                        ]
-                    }
-                },
-                rivals: {
-                    title: 'Rivals - Full Feature List',
-                    features: {
-                        'Combat Features': ['Mouse Aimbot', 'Mouse Aimbot Target Part', 'Mouse Aimbot Smoothness', 'Silent Aim', 'Head Hit Chance', 'Max Distance', 'FOV Visible', 'FOV Size', 'Anti Katana', 'Triggerbot', 'No Recoil', 'Rapid Fire', 'No Spread', 'Instant Aim', 'Teleport Above Player', 'Teleport Height', 'Teleport Key-bind'],
-                        'Visuals Features': ['Highlight ESP', 'Team Highlight Color / Enemy Highlight Color', 'Max Highlight Distance', 'Box ESP, Tracers, Name ESP, Weapon ESP', 'Health Bar and Health Value', 'Hide Dead, Hide Team', 'Show Skeleton for R15', 'Team Color / Enemy Color', 'Max Distance for ESP features'],
-                        'Utilities / Movement': ['UI Toggle Key', 'Use WalkSpeed / WalkSpeed value', 'Use JumpPower / Jump Power value', 'Fly with Toggle key and Fly Speed', 'Noclip with Toggle Key', 'SpinBot with speed', 'Bhop, Auto Ping, Infinite Jump', 'Anti Flash, No Smoke, Explode Trignines', 'No Killbricks, No Out Of Bounds, Walk on Water', 'Device Spoofer (Mouse/Keyboard, Touch, Gamepad, VR)', 'AutoSelectGun + AutoSelectPrimary/Secondary/Melee/Utility'],
-                        'Anti-Cheat & Misc': ['Anti-Cheat Bypass', 'Notification system with custom icons', 'Settings auto-save and load', 'Handles R6 and R15 rigs for ESP/Skeleton', 'Streamer mode support for all UI text', 'Weapon ownership detection for auto-select']
-                    }
-                }
-            };
-            
-            const featuresModal = document.getElementById('features-modal');
-            const closeFeaturesModalButton = document.getElementById('close-features-modal-button');
-            const featuresModalTitle = document.getElementById('features-modal-title');
-            const featuresModalList = document.getElementById('features-modal-list');
-
-            function showFeatures(featureKey) {
-                const data = featuresData[featureKey];
-                if (data) {
-                    featuresModalTitle.textContent = data.title;
-                    let content = '';
-                    for (const category in data.features) {
-                        content += `<h4 class="text-lg font-semibold text-white mt-4 first:mt-0 mb-2">${category}</h4>`;
-                        content += '<ul class="list-disc list-inside text-gray-400 space-y-1">';
-                        content += data.features[category].map(item => `<li>${item}</li>`).join('');
-                        content += '</ul>';
-                    }
-                    featuresModalList.innerHTML = content;
-                    openModal(featuresModal);
-                }
-            }
-
-            document.querySelectorAll('.see-features-button').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    showFeatures(button.dataset.features);
-                });
-            });
-
-            closeFeaturesModalButton.addEventListener('click', () => closeModal(featuresModal));
-            featuresModal.addEventListener('click', (e) => {
-                 if (e.target === featuresModal) closeModal(featuresModal);
-            });
-
-            const featuresSelectionModal = document.getElementById('features-selection-modal');
-            const openFeaturesSelectionModalButton = document.getElementById('features-nav-button');
-            const openFeaturesSelectionModalButton2 = document.getElementById('features-nav-button-secondary');
-
-            function openFeaturesSelectionModal(e) {
-                 e.preventDefault();
-                 openModal(featuresSelectionModal);
-            }
-            
-            openFeaturesSelectionModalButton.addEventListener('click', openFeaturesSelectionModal);
-            openFeaturesSelectionModalButton2.addEventListener('click', openFeaturesSelectionModal);
-
-            const closeFeaturesSelectionModalButton = document.getElementById('close-features-selection-modal-button');
-            
-            document.querySelectorAll('.select-feature-card').forEach(card => {
-                card.addEventListener('click', () => {
-                    const featureKey = card.dataset.features;
-                    closeModal(featuresSelectionModal);
-                    setTimeout(() => showFeatures(featureKey), 300);
-                });
-            });
-            
-            closeFeaturesSelectionModalButton.addEventListener('click', () => closeModal(featuresSelectionModal));
-            featuresSelectionModal.addEventListener('click', (e) => {
-                 if (e.target === featuresSelectionModal) closeModal(featuresSelectionModal);
-            });
-            
-            const purchaseModal = document.getElementById('purchase-modal');
-            const openPurchaseModalButtons = document.querySelectorAll('.get-key-button');
-            const closePurchaseModalButton = document.getElementById('close-purchase-modal-button');
-
-            openPurchaseModalButtons.forEach(button => button.addEventListener('click', (e) => {
-                e.preventDefault();
-                openModal(purchaseModal);
-            }));
-
-            closePurchaseModalButton.addEventListener('click', () => closeModal(purchaseModal));
-            purchaseModal.addEventListener('click', (e) => {
-                if (e.target === purchaseModal) closeModal(purchaseModal);
-            });
-
-            const pricingModal = document.getElementById('pricing-modal');
-            const openPricingModalButtons = document.querySelectorAll('.setup-guide-button, .pricing-button');
-            const closePricingModalButton = document.getElementById('close-pricing-modal-button');
-
-            openPricingModalButtons.forEach(button => button.addEventListener('click', (e) => {
-                e.preventDefault();
-                openModal(pricingModal);
-            }));
-
-            closePricingModalButton.addEventListener('click', () => closeModal(pricingModal));
-            pricingModal.addEventListener('click', (e) => {
-                if (e.target === pricingModal) closeModal(pricingModal);
-            });
-            
-            const cards = document.querySelectorAll('.card-glow-border');
-            cards.forEach(card => {
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const { width, height } = rect;
-                    const rotateX = (y / height - 0.5) * -20;
-                    const rotateY = (x / width - 0.5) * 20;
-
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-                });
-
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-                });
-            });
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.animate-on-scroll').forEach(el => {
-                observer.observe(el);
-            });
-
-        });
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
-
-
-
 
