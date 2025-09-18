@@ -271,10 +271,23 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
-            // --- EDIT SCRIPT STATUS HERE ---
-            // Options: "Online", "Testing", "Offline"
-            const currentStatus = "Online";
-            // --------------------------------
+            /*
+            |--------------------------------------------------------------------------
+            | SCRIPT STATUS CONFIGURATION
+            |--------------------------------------------------------------------------
+            |
+            | This is the easiest place to update the status of your script.
+            | Just change the text inside the quotes below to one of the
+            | three available options.
+            |
+            | Available Options:
+            |   - "Online"  (Displays a green glowing dot)
+            |   - "Testing" (Displays an orange glowing dot)
+            |   - "Offline" (Displays a red glowing dot)
+            |
+            */
+            const currentStatus = "Offline";
+
 
             const statusIndicator = document.getElementById('script-status-indicator');
             const statusText = document.getElementById('script-status-text');
@@ -476,6 +489,7 @@
 
 </body>
 </html>
+
 
 
 
