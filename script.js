@@ -280,6 +280,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatInput = document.getElementById('chat-input');
     const chatMessages = document.getElementById('chat-messages');
     const chatSubmitButton = document.getElementById('chat-submit-button');
+    let chatHistory = [];
+
+    const openChat = () => {
+        chatWindow.classList.remove('hidden');
+        setTimeout(() => {
+             chatWindow.classList.remove('opacity-0');
+             chatWindow.classList.remove('scale-95');
+        }, 10);
+    };
 
     const appendMessage = (text, sender) => {
         const messageElement = document.createElement('div');
@@ -305,15 +314,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     
-    appendMessage("Hi! I'm the Exerium Assistant. How can I help you today?", 'ai');
+    const aiWelcomeMessage = "Hi! I'm the Exerium Assistant. How can I help you today?";
+    appendMessage(aiWelcomeMessage, 'ai');
+    chatHistory.push({ role: "model", parts: [{ text: aiWelcomeMessage }]});
 
-    chatWidget.addEventListener('click', () => {
-        chatWindow.classList.toggle('hidden');
-        setTimeout(() => {
-             chatWindow.classList.toggle('opacity-0');
-             chatWindow.classList.toggle('scale-95');
-        }, 10);
-    });
+    chatWidget.addEventListener('click', openChat);
 
     closeChatButton.addEventListener('click', () => {
         closeModal(chatWindow);
@@ -325,6 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!userMessage) return;
 
         appendMessage(userMessage, 'user');
+        chatHistory.push({ role: "user", parts: [{ text: userMessage }] });
         chatInput.value = '';
         chatSubmitButton.disabled = true;
         showTypingIndicator();
@@ -335,7 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ query: userMessage }),
+                body: JSON.stringify({ history: chatHistory }),
             });
 
             if (!response.ok) {
@@ -345,6 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             removeTypingIndicator();
             appendMessage(data.reply, 'ai');
+            chatHistory.push({ role: "model", parts: [{ text: data.reply }] });
         } catch (error) {
             removeTypingIndicator();
             appendMessage("Sorry, I couldn't connect to the AI. Please try again later.", 'ai');
