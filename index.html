@@ -250,7 +250,6 @@
             min-width: 0;
             overflow-wrap: break-word;
             word-wrap: break-word;
-            word-break: break-all;
         }
         .user-message {
             background: linear-gradient(90deg, #8b5cf6, #a855f7);
@@ -870,7 +869,8 @@
                 const systemPrompt = `You are the Exerium Assistant, a helpful and friendly AI chatbot. Your main purpose is to answer questions about the Exerium scripts for the games FF2 and Rivals, but you can also have a friendly conversation and answer general questions.
             
                 Key Information:
-                - The website and scripts were created by a talented developer named "auaqa".
+                - The website was created by a talented developer named "auaqa".
+                - The scripts themselves were created by a talented team of developers: "persyx", "auaqa", and "void".
                 - You are an AI powered by Google's Gemini model.
                 - The current year is 2025.
                 
@@ -883,11 +883,11 @@
                 ${rivalsFeatures}
                 
                 Your instructions:
-                - Be friendly, concise, and helpful.
+                - Be friendly, concise, and helpful. Keep your answers relatively short and to the point.
                 - Use Markdown for formatting, especially for bolding important terms with **double asterisks**.
                 - Prioritize answering questions about Exerium, but feel free to answer general knowledge questions.
                 - If asked a general question, provide a good answer but try to gently guide the conversation back to Exerium if it feels natural.
-                - Keep your answers relatively short and easy to read. Use bullet points if listing multiple features.`;
+                - Use bullet points if listing multiple features.`;
                 
                 const apiKey = "AIzaSyBE-ZUjBKqYz4Q8eVKI8znI4l3YX2zgW4Q";
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
