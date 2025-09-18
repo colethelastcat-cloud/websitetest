@@ -1,291 +1,238 @@
-:root {
-    --main-bg-color: #0c0a09;
-    --accent-color: #8b5cf6;
-    --accent-color-rgb: 139, 92, 246;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exerium - FF2 & Rivals</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="text-white">
 
-body {
-    background-color: var(--main-bg-color);
-    font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
-}
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
-.no-scroll {
-    overflow: hidden;
-}
+        <header class="py-6">
+            <nav class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <img src="https://media.discordapp.net/attachments/1416618754531393699/1418054850591195279/image.png?ex=68ccb9fe&is=68cb687e&hm=5a2aa5578f8fa5bfa3c6f87a787a282d0e28d7d579eb690069fa39a2264edb46&=&format=webp&quality=lossless" alt="Exerium Logo" class="h-8 w-auto">
+                    <span class="font-bold text-xl tracking-wide">EXERIUM</span>
+                     <div class="flex items-center text-sm font-semibold ml-4">
+                        <span id="script-status-indicator" class="w-2.5 h-2.5 rounded-full mr-2"></span>
+                        <span id="script-status-text"></span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8 font-medium text-gray-400">
+                    <a href="#home" class="hover:text-white transition-colors nav-link">Home</a>
+                    <a href="#" id="features-nav-button" class="hover:text-white transition-colors nav-link">Features</a>
+                    <a href="#" class="hover:text-white transition-colors nav-link pricing-button">Pricing</a>
+                </div>
+                <a href="https://discord.gg/wUwA8J2eDf" target="_blank" class="hidden md:flex items-center space-x-2 bg-gray-800 hover:bg-gray-700 transition-colors px-4 py-2 rounded-lg font-semibold">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-discord" viewBox="0 0 16 16">
+                        <path d="M13.545 2.907a13.227 13.227 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.19 12.19 0 0 0-3.658 0 8.258 8.258 0 0 0-.412-.833.051.051 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032c.001.014.01.028.021.037a13.276 13.276 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019c.308-.42.582-.863.818-1.329a.05.05 0 0 0-.01-.059.051.051 0 0 0-.018-.011 8.875 8.875 0 0 1-1.248-.595.05.05 0 0 1-.02-.066.051.051 0 0 1 .015-.019c.084-.043.168-.086.248-.132.134-.078.268-.157.394-.238a.052.052 0 0 1 .04-.003c.118.066.23.137.336.206.027.018.05.038.066.06.002.003.004.006.005.009a12.553 12.553 0 0 0 3.454 0c.001-.003.003-.006.005-.009.016-.022.039-.042.066-.06.106-.07.218-.14.336-.206a.052.052 0 0 1 .04.003c.126.081.26.16.394.238.08.046.164.089.248.132a.051.051 0 0 1 .015.019.05.05 0 0 1-.02.066 8.875 8.875 0 0 1-1.248.595.05.05 0 0 0-.01.059.051.051 0 0 0 .018.011c.236.466.51.899.818 1.329a.05.05 0 0 0 .056.019 13.235 13.235 0 0 0 4-2.019.041.041 0 0 0 .021-.037c.302-3.004-.23-6.007-1.346-8.995a.04.04 0 0 0-.021-.018zM4.046 12.64c-1.187 0-2.147-.96-2.147-2.148 0-1.187.96-2.147 2.147-2.147 1.188 0 2.148.96 2.148 2.147 0 1.188-.96 2.148-2.148 2.148zm7.908 0c-1.187 0-2.147-.96-2.147-2.148 0-1.187.96-2.147 2.147-2.147 1.188 0 2.148.96 2.148 2.147 0 1.188-.96 2.148-2.148 2.148z"/>
+                    </svg>
+                    <span>Join Discord</span>
+                </a>
+            </nav>
+        </header>
 
-.accent-color {
-    color: var(--accent-color);
-}
+        <main id="home">
+            <section class="text-center pt-20 pb-32">
+                <div class="fade-in-up">
+                    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter">
+                        The Ultimate Advantage for
+                        <span class="accent-color">FF2 & Rivals</span>
+                    </h1>
+                    <p class="mt-6 max-w-2xl mx-auto text-lg text-gray-400">
+                        Meet Exerium—sleek, fast, and powerful scripts built with good developers and more.
+                    </p>
+                </div>
+                <div class="mt-8 flex justify-center items-center space-x-6 text-gray-300 fade-in-up delay-1">
+                    <div class="flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shield-check text-green-400" viewBox="0 0 16 16"><path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.95-1.183-2.4-1.99-3.588-2.33a1.49 1.49 0 0 0-.31-.043H7.5zm-.155 6.342a.5.5 0 0 1 .707 0l1.5 1.5a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L4.5 10.293l.683-.683z"/></svg>
+                        <span>100% Undetected</span>
+                    </div>
+                     <div class="flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightning-charge-fill text-yellow-400" viewBox="0 0 16 16"><path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.032z"/></svg>
+                        <span>Lightning Fast</span>
+                    </div>
+                     <div class="flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-patch-check-fill text-blue-400" viewBox="0 0 16 16"><path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/></svg>
+                        <span>Premium Quality</span>
+                    </div>
+                </div>
+                <div class="mt-10 flex justify-center space-x-4 fade-in-up delay-2">
+                    <a href="#" class="button-primary px-8 py-3 rounded-lg font-semibold text-lg get-key-button">Purchase Now</a>
+                    <a href="#" id="features-nav-button-secondary" class="button-secondary px-8 py-3 rounded-lg font-semibold text-lg">View Features</a>
+                </div>
+            </section>
+            
+            <section class="pb-24">
+                <h2 class="text-3xl font-bold text-center mb-12 animate-on-scroll">Our Products</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="card-glow-border rounded-2xl p-8 animate-on-scroll">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold">FF2 Script</h3>
+                                <p class="text-gray-400 mt-1">Aimbot, style throws, route assists, anti-tag visual, and customizable HUD.</p>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-lightning-fill text-gray-600" viewBox="0 0 16 16"><path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5z"/></svg>
+                        </div>
+                        <img src="https://ff2-rivals-website.vercel.app/_next/image?url=https%3A%2F%2Fslelguoygbfzlpylpxfs.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fdocument-uploads%2Fimage-1758158916246.png&w=1920&q=75" alt="FF2 Script Visual" class="rounded-lg mb-6 w-full h-64 object-cover">
+                        <div class="grid grid-cols-2 gap-4">
+                            <a href="#" class="button-secondary w-full py-2.5 text-center rounded-lg font-semibold setup-guide-button">Purchase</a>
+                            <a href="#" class="button-primary w-full py-2.5 text-center rounded-lg font-semibold see-features-button" data-features="ff2">See Features</a>
+                        </div>
+                    </div>
+                    <div class="card-glow-border rounded-2xl p-8 animate-on-scroll">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold">Rivals Script</h3>
+                                <p class="text-gray-400 mt-1">Smart ESP, movement tweaks, auto-exec routines, and clean overlays.</p>
+                            </div>
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-lightning-fill text-gray-600" viewBox="0 0 16 16"><path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5z"/></svg>
+                        </div>
+                        <img src="https://ff2-rivals-website.vercel.app/_next/image?url=https%3A%2F%2Fslelguoygbfzlpylpxfs.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fdocument-uploads%2Fimage-1758158937286.png&w=1920&q=75" alt="Rivals Script Visual" class="rounded-lg mb-6 w-full h-64 object-cover">
+                         <div class="grid grid-cols-2 gap-4">
+                            <a href="#" class="button-secondary w-full py-2.5 text-center rounded-lg font-semibold setup-guide-button">Purchase</a>
+                            <a href="#" class="button-primary w-full py-2.5 text-center rounded-lg font-semibold see-features-button" data-features="rivals">See Features</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-.button-primary {
-    background: linear-gradient(90deg, #8b5cf6, #c084fc);
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(var(--accent-color-rgb), 0.3);
-}
+            <section class="pb-24">
+                 <h2 class="text-3xl font-bold text-center mb-12 animate-on-scroll">What Our Users Say</h2>
+                 <div class="slider animate-on-scroll">
+                    <div class="slider-track-container">
+                        <div class="slider-track">
+                             <div class="slide p-8 bg-[#18181b] rounded-lg">
+                                <p class="text-gray-300">"Absolutely top-notch. Couldn't ask for a better script for FF2. The aimbot is incredibly smooth and the features are just what I needed."</p>
+                                <p class="mt-4 font-bold">- HappyUser123</p>
+                            </div>
+                             <div class="slide p-8 bg-[#18181b] rounded-lg">
+                                <p class="text-gray-300">"The Rivals script is insane. The ESP is clean and the anti-cheat bypass works flawlessly. 10/10 from me."</p>
+                                <p class="mt-4 font-bold">- GamerPro</p>
+                            </div>
+                             <div class="slide p-8 bg-[#18181b] rounded-lg">
+                                <p class="text-gray-300">"Support is amazing. Had a small issue and the developer helped me out right away. The community is great too."</p>
+                                <p class="mt-4 font-bold">- ScriptFanatic</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="slider-button prev hidden">&#10094;</button>
+                    <button class="slider-button next hidden">&#10095;</button>
+                    <div class="slider-dots"></div>
+                </div>
+            </section>
+        </main>
 
-.button-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(var(--accent-color-rgb), 0.5);
-}
+        <footer class="text-center py-8 text-gray-500 border-t border-gray-800">
+            <p>&copy; 2025 Exerium. All rights reserved.</p>
+        </footer>
 
-.button-secondary {
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
-}
+    </div>
+    
+    <!-- Modals -->
+    <div id="features-modal" class="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center p-4 z-50 hidden opacity-0 scale-95 transition-all duration-300">
+        <div class="modal-content-box w-full max-w-3xl rounded-2xl max-h-[80vh] flex flex-col">
+            <div class="p-6 border-b border-white/10 flex justify-between items-center">
+                <h3 id="features-modal-title" class="text-2xl font-bold">Features</h3>
+                <button id="close-features-modal-button" class="close-modal-button text-gray-400 hover:text-white">&times;</button>
+            </div>
+            <div id="features-modal-list" class="p-8 overflow-y-auto"></div>
+        </div>
+    </div>
 
-.button-secondary:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
-}
+    <div id="purchase-modal" class="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center p-4 z-50 hidden opacity-0 scale-95 transition-all duration-300">
+        <div class="modal-content-box w-full max-w-md rounded-2xl text-center p-8">
+            <h3 class="text-2xl font-bold mb-4">Purchase in Discord</h3>
+            <p class="text-gray-400 mb-6">To get your key, please join our Discord server and open a ticket in the purchase channel.</p>
+            <a href="https://discord.gg/wUwA8J2eDf" target="_blank" class="button-primary w-full py-3 rounded-lg font-semibold text-lg">Join Server</a>
+            <button id="close-purchase-modal-button" class="absolute top-4 right-4 close-modal-button text-gray-400 hover:text-white">&times;</button>
+        </div>
+    </div>
+    
+    <div id="pricing-modal" class="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center p-4 z-50 hidden opacity-0 scale-95 transition-all duration-300">
+        <div class="modal-content-box w-full max-w-4xl rounded-2xl">
+             <div class="p-6 border-b border-white/10 flex justify-between items-center">
+                <h3 class="text-2xl font-bold">Our Pricing</h3>
+                <button id="close-pricing-modal-button" class="close-modal-button text-gray-400 hover:text-white">&times;</button>
+            </div>
+            <div class="p-8">
+                <div class="grid md:grid-cols-3 gap-6 text-center">
+                    <div class="bg-[#18181b] border border-gray-700 rounded-lg p-6">
+                        <h4 class="text-xl font-semibold">7-Day Key</h4>
+                        <p class="text-3xl font-bold my-4 accent-color">R$ 400</p>
+                        <a href="https://discord.gg/wUwA8J2eDf" target="_blank" class="button-secondary w-full py-2.5 rounded-lg font-semibold">Get Key</a>
+                    </div>
+                    <div class="bg-[#18181b] border border-gray-700 rounded-lg p-6">
+                        <h4 class="text-xl font-semibold">30-Day License</h4>
+                        <p class="text-3xl font-bold my-4 accent-color">R$ 1,500</p>
+                        <a href="https://discord.gg/wUwA8J2eDf" target="_blank" class="button-primary w-full py-2.5 rounded-lg font-semibold">Get Key</a>
+                    </div>
+                     <div class="bg-[#18181b] border border-gray-700 rounded-lg p-6">
+                        <h4 class="text-xl font-semibold">Lifetime Key</h4>
+                        <p class="text-3xl font-bold my-4 accent-color">R$ 3,000</p>
+                         <a href="https://discord.gg/wUwA8J2eDf" target="_blank" class="button-secondary w-full py-2.5 rounded-lg font-semibold">Get Key</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+     <div id="features-selection-modal" class="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center p-4 z-50 hidden opacity-0 scale-95 transition-all duration-300">
+        <div class="modal-content-box w-full max-w-2xl rounded-2xl">
+            <div class="p-6 border-b border-white/10 flex justify-between items-center">
+                <h3 class="text-2xl font-bold">Select a Product</h3>
+                <button id="close-features-selection-modal-button" class="close-modal-button text-gray-400 hover:text-white">&times;</button>
+            </div>
+            <div class="p-8 grid md:grid-cols-2 gap-6">
+                <div class="select-feature-card cursor-pointer bg-[#18181b] border border-gray-700 hover:border-violet-500 rounded-lg p-4 text-center transition-all" data-features="ff2">
+                    <img src="https://ff2-rivals-website.vercel.app/_next/image?url=https%3A%2F%2Fslelguoygbfzlpylpxfs.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fdocument-uploads%2Fimage-1758158916246.png&w=1920&q=75" alt="FF2" class="rounded-md mx-auto mb-4 h-32 object-cover">
+                    <h4 class="text-lg font-semibold">FF2 Features</h4>
+                </div>
+                <div class="select-feature-card cursor-pointer bg-[#18181b] border border-gray-700 hover:border-violet-500 rounded-lg p-4 text-center transition-all" data-features="rivals">
+                    <img src="https://ff2-rivals-website.vercel.app/_next/image?url=https%3A%2F%2Fslelguoygbfzlpylpxfs.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fdocument-uploads%2Fimage-1758158937286.png&w=1920&q=75" alt="Rivals" class="rounded-md mx-auto mb-4 h-32 object-cover">
+                    <h4 class="text-lg font-semibold">Rivals Features</h4>
+                </div>
+            </div>
+        </div>
+    </div>
 
-.fade-in-up {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
+    <!-- AI Chat -->
+    <div id="ai-chat-widget" class="fixed bottom-6 right-6 z-40 cursor-pointer">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center bg-violet-600 animate-pulse-glow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chat-quote-fill" viewBox="0 0 16 16"><path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM7.194 6.766a1.688 1.688 0 0 0-1.688 1.688 1.688 1.688 0 0 0 1.688 1.688h.211a1.688 1.688 0 0 0 1.688-1.688 1.688 1.688 0 0 0-1.688-1.688h-.211zm4 0a1.688 1.688 0 0 0-1.688 1.688 1.688 1.688 0 0 0 1.688 1.688h.211a1.688 1.688 0 0 0 1.688-1.688 1.688 1.688 0 0 0-1.688-1.688h-.211z"/></svg>
+        </div>
+    </div>
+    
+    <div id="ai-chat-window" class="fixed bottom-24 right-6 w-[440px] h-[600px] z-50 hidden opacity-0 scale-95 transition-all duration-300">
+        <div class="modal-content-box w-full h-full rounded-2xl flex flex-col">
+            <div class="p-4 border-b border-white/10 flex justify-between items-center flex-shrink-0">
+                <div class="flex items-center space-x-3">
+                     <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                     <h3 class="text-lg font-bold">Exerium Assistant</h3>
+                </div>
+                <button id="close-chat-button" class="close-modal-button text-gray-400 hover:text-white">&times;</button>
+            </div>
+            <div id="chat-messages" class="flex-grow p-4 space-y-4 overflow-y-auto">
+            </div>
+            <div class="p-4 border-t border-white/10 flex-shrink-0">
+                <form id="chat-form" class="flex items-center space-x-2">
+                    <input type="text" id="chat-input" placeholder="Ask a question..." class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-violet-500">
+                    <button type="submit" id="chat-submit-button" class="bg-violet-600 hover:bg-violet-700 rounded-lg p-2.5">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16"><path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178z"/></svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
 
-.fade-in-up.is-visible,
-.fade-in-up.delay-1.is-visible,
-.fade-in-up.delay-2.is-visible,
-.fade-in-up.delay-3.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+    <script src="script.js"></script>
 
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.2s; }
-.delay-3 { transition-delay: 0.3s; }
-
-.card-glow-border {
-    position: relative;
-    background: #18181b;
-    border: 1px solid #27272a;
-    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-    will-change: transform;
-}
-
-.card-glow-border:hover {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-}
-
-.card-glow-border::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 1.1rem; 
-    padding: 1px;
-    background: linear-gradient(120deg, transparent, var(--accent-color), transparent);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-}
-
-.card-glow-border:hover::before {
-    opacity: 1;
-}
-
-.animate-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-}
-
-.animate-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.animate-on-scroll:nth-child(2) {
-    transition-delay: 0.1s;
-}
-.status-indicator-online {
-    background-color: #22c55e;
-    box-shadow: 0 0 10px #22c55e;
-}
-.status-text-online { color: #22c55e; }
-.status-indicator-testing {
-    background-color: #f59e0b;
-    box-shadow: 0 0 10px #f59e0b;
-}
-.status-text-testing { color: #f59e0b; }
-.status-indicator-offline {
-    background-color: #ef4444;
-    box-shadow: 0 0 10px #ef4444;
-}
-.status-text-offline { color: #ef4444; }
-
-.modal-content-box {
-    background-image: radial-gradient(circle at top, rgba(var(--accent-color-rgb), 0.1), transparent 40%);
-    background-color: #111014;
-    border: 1px solid rgba(var(--accent-color-rgb), 0.2);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 40px rgba(var(--accent-color-rgb), 0.2) inset;
-}
-.close-modal-button {
-    transition: transform 0.2s ease;
-}
-.close-modal-button:hover {
-    transform: rotate(90deg);
-}
-
-#features-modal-list::-webkit-scrollbar {
-    width: 8px;
-}
-
-#features-modal-list::-webkit-scrollbar-track {
-    background: #18181b;
-}
-
-#features-modal-list::-webkit-scrollbar-thumb {
-    background-color: #3f3f46;
-    border-radius: 4px;
-}
-
-#features-modal-list::-webkit-scrollbar-thumb:hover {
-    background: #52525b;
-}
-
-.slider {
-    position: relative;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.slider-track-container {
-    overflow: hidden;
-    border-radius: 0.5rem;
-}
-
-.slider-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 100%;
-}
-
-.slide {
-    min-width: 100%;
-    box-sizing: border-box;
-}
-
-.slider-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0,0,0,0.3);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: white;
-    font-size: 24px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.slider-button:hover {
-    background-color: rgba(0,0,0,0.5);
-}
-
-.slider-button.prev {
-    left: -50px;
-}
-
-.slider-button.next {
-    right: -50px;
-}
-
-.slider-dots {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.dot {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin: 0 5px;
-    background-color: #4b5563;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.dot.active {
-    background-color: var(--accent-color);
-    transform: scale(1.2);
-}
-
-#chat-messages {
-    scrollbar-width: thin;
-    scrollbar-color: #3f3f46 #18181b;
-    min-width: 0;
-}
-
-#chat-messages::-webkit-scrollbar {
-    width: 6px;
-}
-#chat-messages::-webkit-scrollbar-track {
-    background: transparent;
-}
-#chat-messages::-webkit-scrollbar-thumb {
-    background-color: #3f3f46;
-    border-radius: 3px;
-}
-
-.chat-message {
-    padding: 10px 15px;
-    border-radius: 18px;
-    max-width: 80%;
-    overflow-wrap: break-word;
-    word-break: break-all;
-}
-.user-message {
-    background: linear-gradient(90deg, #8b5cf6, #a855f7);
-    color: white;
-    border-bottom-right-radius: 4px;
-    margin-left: auto;
-}
-.ai-message {
-    background-color: #27272a;
-    color: #d4d4d8;
-    border-bottom-left-radius: 4px;
-    margin-right: auto;
-}
-
-.typing-indicator span {
-    height: 8px;
-    width: 8px;
-    background-color: #9ca3af;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 0 1px;
-    animation: bounce 1.4s infinite ease-in-out both;
-}
-.typing-indicator span:nth-of-type(1) { animation-delay: -0.32s; }
-.typing-indicator span:nth-of-type(2) { animation-delay: -0.16s; }
-
-@keyframes bounce {
-    0%, 80%, 100% { transform: scale(0); }
-    40% { transform: scale(1.0); }
-}
-
-@keyframes pulse-glow {
-    0%, 100% {
-      transform: scale(1);
-      box-shadow: 0 0 15px 0px rgba(139, 92, 246, 0.6);
-    }
-    50% {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px 5px rgba(139, 92, 246, 0.8);
-    }
-}
-
-.animate-pulse-glow {
-    animation: pulse-glow 2.5s infinite ease-in-out;
-}
-
+</body>
+</html>
 
