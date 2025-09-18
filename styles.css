@@ -1,0 +1,133 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0A0A0A;
+    color: #e5e7eb;
+    background-image: radial-gradient(circle at top, #111827 0%, #0A0A0A 50%);
+    overflow-x: hidden;
+}
+.accent-color {
+    color: #8B5CF6;
+}
+.button-primary {
+    background-color: #8B5CF6;
+    color: #fff;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.button-primary:hover {
+    transform: scale(1.05);
+    background-color: #A78BFA;
+}
+.button-secondary {
+     background-color: rgba(139, 92, 246, 0.1);
+     border: 1px solid rgba(139, 92, 246, 0.2);
+     color: #A78BFA;
+     transition: background-color 0.3s ease;
+}
+.button-secondary:hover {
+    background-color: rgba(139, 92, 246, 0.2);
+}
+.card-glow-border {
+    position: relative;
+    background-color: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    transition: transform 0.15s ease-out, border-color 0.3s ease;
+}
+.card-glow-border:hover {
+    border-color: #8B5CF6;
+}
+.card-glow-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 1.1rem; 
+    padding: 1px;
+    background: linear-gradient(120deg, transparent, #8B5CF6, transparent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+.card-glow-border:hover::before {
+    opacity: 1;
+}
+
+.modal-content-box {
+    background-color: #111827;
+    background-image: radial-gradient(circle at top, #1e293b 0%, #111827 80%);
+    border: 1px solid #374151;
+    position: relative;
+}
+
+.modal-content-box::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: 0.8rem;
+    background: linear-gradient(145deg, #8B5CF6, #111827, #8B5CF6);
+    z-index: -1;
+}
+
+.close-modal-button {
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.close-modal-button:hover {
+    transform: scale(1.1) rotate(90deg);
+    color: #fff;
+}
+
+.slider { position: relative; max-width: 800px; margin: auto; }
+.slider-track-container { overflow: hidden; }
+.slider-track { display: flex; transition: transform 0.5s ease-in-out; }
+.slide { min-width: 100%; box-sizing: border-box; }
+.slider-button { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 0.5rem; border-radius: 9999px; cursor: pointer; z-index: 10; width: 40px; height: 40px; display:flex; justify-content:center; align-items:center; transition: background-color 0.3s; }
+.slider-button:hover { background-color: rgba(139, 92, 246, 0.5); }
+.slider-button.prev { left: -50px; }
+.slider-button.next { right: -50px; }
+.slider-dots { text-align: center; padding-top: 20px; }
+.dot { cursor: pointer; height: 12px; width: 12px; margin: 0 4px; background-color: #4b5563; border-radius: 50%; display: inline-block; transition: background-color 0.3s ease, transform 0.3s ease; }
+.dot.active { background-color: #8B5CF6; transform: scale(1.2); }
+
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.7s ease-out forwards;
+}
+.delay-1 { animation-delay: 0.15s; }
+.delay-2 { animation-delay: 0.3s; }
+.delay-3 { animation-delay: 0.45s; }
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.animate-on-scroll:nth-child(2) {
+    transition-delay: 0.1s;
+}
+.status-indicator-online {
+    background-color: #22c55e;
+    box-shadow: 0 0 10px #22c55e;
+}
+.status-text-online { color: #22c55e; }
+.status-indicator-testing {
+    background-color: #f59e0b;
+    box-shadow: 0 0 10px #f59e0b;
+}
+.status-text-testing { color: #f59e0b; }
+.status-indicator-offline {
+    background-color: #ef4444;
+    box-shadow: 0 0 10px #ef4444;
+}
+.status-text-offline { color: #ef4444; }
