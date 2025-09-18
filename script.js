@@ -335,24 +335,69 @@ document.addEventListener('DOMContentLoaded', () => {
         chatSubmitButton.disabled = true;
         showTypingIndicator();
 
+        const ff2Features = JSON.stringify(featuresData.ff2.features, null, 2);
+        const rivalsFeatures = JSON.stringify(featuresData.rivals.features, null, 2);
+
+        const systemPrompt = `You are the Exerium Assistant, a helpful and friendly AI chatbot. Your main purpose is to answer questions about the Exerium scripts for the games FF2 and Rivals, but you can also have a friendly conversation and answer general questions.
+    
+        Key Information:
+        - The website and scripts were created by a talented developer named "auaqa".
+        - You are an AI powered by Google's Gemini model.
+        - The current year is 2025.
+        
+        Here is detailed information about the scripts to help you answer questions:
+        
+        FF2 SCRIPT FEATURES:
+        ${ff2Features}
+        
+        RIVALS SCRIPT FEATURES:
+        ${rivalsFeatures}
+        
+        Your instructions:
+        - Be friendly, concise, and helpful.
+        - Prioritize answering questions about Exerium, but feel free to answer general knowledge questions.
+        - If asked a general question, provide a good answer but try to gently guide the conversation back to Exerium if it feels natural.
+        - Keep your answers relatively short and easy to read. Use bullet points if listing multiple features.`;
+
+        // IMPORTANT: Your API key is placed directly in the code below.
+        // This is not recommended for production websites as it can be publicly seen.
+        // For personal projects or testing, this is acceptable.
+        const apiKey = "AIzaSyBE-ZUjBKqYz4Q8eVKI8znI4l3YX2zgW4Q";
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+        const payload = {
+            contents: chatHistory,
+            systemInstruction: {
+                parts: [{ text: systemPrompt }]
+            },
+        };
+
         try {
-            const response = await fetch('/api/gemini', {
+            const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ history: chatHistory }),
+                body: JSON.stringify(payload),
             });
 
             if (!response.ok) {
+                console.error("Gemini API Error:", await response.text());
                 throw new Error('Network response was not ok');
             }
 
             const data = await response.json();
+            const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+
             removeTypingIndicator();
-            appendMessage(data.reply, 'ai');
-            chatHistory.push({ role: "model", parts: [{ text: data.reply }] });
+            if (text) {
+                appendMessage(text, 'ai');
+                chatHistory.push({ role: "model", parts: [{ text: text }] });
+            } else {
+                 appendMessage("I'm not sure how to respond to that. Can I help with something else?", 'ai');
+            }
         } catch (error) {
+            console.error('Fetch Error:', error);
             removeTypingIndicator();
             appendMessage("Sorry, I couldn't connect to the AI. Please try again later.", 'ai');
         } finally {
