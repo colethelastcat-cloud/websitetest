@@ -222,6 +222,7 @@ body {
 #chat-messages {
     scrollbar-width: thin;
     scrollbar-color: #3f3f46 #18181b;
+    min-width: 0;
 }
 
 #chat-messages::-webkit-scrollbar {
@@ -240,7 +241,7 @@ body {
     border-radius: 18px;
     max-width: 80%;
     overflow-wrap: break-word;
-    word-break: break-word;
+    word-break: break-all;
 }
 .user-message {
     background: linear-gradient(90deg, #8b5cf6, #a855f7);
@@ -286,4 +287,5 @@ body {
 .animate-pulse-glow {
     animation: pulse-glow 2.5s infinite ease-in-out;
 }
+
 
